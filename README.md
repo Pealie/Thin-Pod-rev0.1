@@ -66,7 +66,7 @@ During bring-up of an earlier pre-release manufactured prototype, the CDK did no
 Before freezing the rev 0.1 open-hardware release, the CDK mating interface and carrier-board connection were corrected so that all relevant CDK ground connections resolve directly to the Thin-Pod `GND` net:
 
 ```text
-J1\_2    GND    ─┐
+J1\_2    GND     ─┐
 J10\_6   GND\_1  ─┤
 J10\_9   GND\_2  ─┤
 J10\_14  GND\_3  ─┼── GND
