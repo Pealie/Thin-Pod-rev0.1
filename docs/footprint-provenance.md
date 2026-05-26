@@ -25,16 +25,7 @@ The key distinction is between:
 |`ThinPod\_DWM3001CDK\_Mating\_Interface\_revA.kicad\_mod`|Qorvo DWM3001-CDK mating interface at `U5`|Thin-Pod-authored interface footprint|Publish|CERN-OHL-W-2.0|
 |`AnalogDevices\_EVAL-ADXL100xZ\_20p35mm.kicad\_mod`|ADXL1005-based evaluation-board / module interface at `U2`|Downloaded from SnapEDA / SnapMagic design-file library|Publish as required third-party dependency, subject to the recorded terms|CC BY-SA 4.0 + SnapMagic Design Exception 1.0|
 |`Pololu\_S7V8F3\_S7V8x\_Module.kicad\_mod`|Pololu regulator-module interface at `U4`|Downloaded from SnapEDA / SnapMagic design-file library|Publish as required third-party dependency, subject to the recorded terms|CC BY-SA 4.0 + SnapMagic Design Exception 1.0|
-
-
-
-| Footprint / dependency | Board function | Provenance category | Publication status | Licence treatment |
-
-|---|---|---|---|---|
-
-| Standard KiCad footprint used for `U3` / ZVP2106A THT package | ZVP2106A THT pin/lead arrangement at `U3` | Selected from the official KiCad footprint library supplied with KiCad 10.0.1 | Referenced as a standard KiCad library dependency; not separately redistributed as Thin-Pod-authored source | KiCad Libraries Licence: CC BY-SA 4.0 with KiCad library exception; use within the Thin-Pod PCB does not alter the CERN-OHL-W-2.0 treatment of the combined board design |
-
-
+|`PFET\_ZVP2106A\_GSD\_THT.kicad\_mod`|ZVP2106A THT pin/lead arrangement at `U3` |Copied or adapted from an official KiCad library footprint selected in KiCad 10.0.1|Publish as a KiCad-library-derived dependency with attribution and licence notice retained|KiCad Libraries Licence: CC BY-SA 4.0 with KiCad library exception |
 
 
 
