@@ -2,7 +2,7 @@
 
 **Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
 
-**Certification status:** Submitted for OSHWA self-certification. An OSHWA certification UID has not yet been issued for this release.
+**Certification status:** Submitted for OSHWA self-certification on 26 May 2026. OSHWA certification UID pending receipt or public directory confirmation.
 
 ## Overview
 
