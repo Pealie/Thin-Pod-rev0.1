@@ -21,7 +21,7 @@ The release design incorporates the corrected CDK ground return in PCB copper: `
 
 
 
-\## Open-hardware and third-party component boundary
+## Open-hardware and third-party component boundary
 
 
 
