@@ -119,8 +119,8 @@ Thin-Pod-rev0.1/
 │   │   └── Thin-Pod\_rev0.1\_fabrication\_outputs.zip
 │   │
 │   └── bom/
-│       ├── Thin-Pod\_rev0.1\_BOM.md
-│       └── Thin-Pod\_rev0.1\_BOM.csv
+│       ├── Thin-Pod\_rev0.1\_Thin-Pod_rev0.1_BOM.md
+│       └── Thin-Pod\_rev0.1\_Thin-Pod_rev0.1_BOM.csv
 │
 ├── docs/
 │   ├── certification-scope.md
