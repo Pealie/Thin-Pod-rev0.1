@@ -1,0 +1,7 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "New_Library") (type "KiCad") (uri "${KIPRJMOD}/New_Library.kicad_sym") (options "") (descr ""))
+	(lib (name "New_Library_0") (type "KiCad") (uri "${KIPRJMOD}/New_Library_0.kicad_sym") (options "") (descr ""))
+	(lib (name "DWM3001C") (type "KiCad") (uri "C:/Users/n_tho/Downloads/DWM3001C/DWM3001C.kicad_sym") (options "") (descr ""))
+	(lib (name "Seeed_XIAO_ESP32C6_DIP_Symbol") (type "KiCad") (uri "C:/Users/n_tho/OneDrive/2026/Github/Hackster/KiCad/Gateway/Thin-Pod Gateway") (options "") (descr ""))
+)
