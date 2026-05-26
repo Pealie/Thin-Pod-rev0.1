@@ -160,8 +160,8 @@ The Gateway, Gateway-side radio components, ESP32 networking hardware and analyt
 
 See:
 
-* [`hardware/bom/_Thin-Pod_rev0.1_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
-* [`hardware/bom/_Thin-Pod_rev0.1_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
+* [`hardware/bom/Thin-Pod_rev0.1_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
+* [`hardware/bom/Thin-Pod_rev0.1_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
 
 ## Third-party components
 
