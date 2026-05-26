@@ -142,7 +142,7 @@ A pre-release manufactured prototype identified that the initially assumed Qorvo
 Before the rev 0.1 OSHWA-facing release was frozen or submitted, the design was corrected so that the relevant exposed CDK ground connections are bonded directly to the Thin-Pod carrier-board `GND` net:
 
 ```text
-J1\_2    GND    ─┐
+J1\_2    GND     ─┐
 J10\_6   GND\_1  ─┤
 J10\_9   GND\_2  ─┤
 J10\_14  GND\_3  ─┼── GND
