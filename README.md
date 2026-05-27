@@ -28,7 +28,7 @@ The design principle is therefore:
 raw vibration windows from the Pod;
 verified window transfer through the UWB subsystem;
 features and later models on the Gateway.
-
+```
 ### Revision identity
 
 The product release path is:
