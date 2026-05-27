@@ -29,7 +29,7 @@ raw vibration windows from the Pod;
 verified window transfer through the UWB subsystem;
 features and later models on the Gateway.
 
-## Revision identity
+### Revision identity
 
 The product release path is:
 
