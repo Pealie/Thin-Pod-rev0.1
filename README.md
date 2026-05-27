@@ -1,259 +1,196 @@
-# Thin-Pod rev 0.1
+# Thin-Pod Gateway rev 0.1
 
-**Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
+**Open-hardware Gateway carrier PCB for receiving, supervising and forwarding Thin-Pod vibration-window data**
 
-**Certification status:** Submitted for OSHWA self-certification on 26 May 2026. OSHWA certification UID pending receipt or public directory confirmation.
+**Development status:** PCB ordered; physical bring-up pending arrival and assembly.  
+**Certification status:** Candidate for a later, separate OSHWA self-certification application. No Gateway OSHWA application has yet been submitted.  
+**Related certified-item boundary:** The submitted OSHWA application for `Thin-Pod rev 0.1` covers the sensor-node carrier PCB only. This Gateway is a separate hardware artefact and does not alter the submitted node certification boundary.
 
 ## Overview
 
-Thin-Pod rev 0.1 is a compact analogue vibration-sensing carrier board intended for experimental condition-monitoring work on motors, pumps, fans, gearboxes and similar rotating machinery. The board supports an ADXL1005-based analogue accelerometer signal path and provides protected power entry, a regulated and switched sensor supply, signal conditioning, accessible test points and a mating interface for a commercially supplied Qorvo DWM3001-CDK development board.
+Thin-Pod Gateway rev 0.1 is a carrier-board prototype intended to connect three commercially supplied development modules:
 
-The design is published as an open-hardware PCB release: editable KiCad source files, project-local library files, fabrication outputs, bill of materials and verification documentation are provided in this repository.
+* an **STM32 NUCLEO-N657X0-Q** as the main host and prospective analysis supervisor;
+* a **Qorvo DWM3001-CDK** as the Gateway-side UWB development module; and
+* a **Seeed Studio XIAO ESP32-C6** as an optional onward-networking subsystem.
 
-## Certification scope
+The design provides the physical interconnect, candidate host-interface route, separate control signals, local decoupling, power distribution and test access required to evaluate a future vibration-window data path from a Thin-Pod node to Gateway-host memory. 
 
-The OSHWA certification application for **Thin-Pod rev 0.1** covers the creator-designed sensor-node carrier PCB and its release documentation.
+Thin-Pod Gateway rev 0.1 is a carrier-board prototype for a modular vibration-telemetry architecture. The Qorvo DWM3001-CDK is intended to operate as a UWB communications subsystem, receiving and validating framed vibration windows before presenting complete records to the STM32 NUCLEO-N657X0-Q through a firmware-defined host interface. The NUCLEO is intended to act as the analytic supervisor for buffering, DSP and later TinyML evaluation. The XIAO ESP32-C6 is optional onward-networking hardware and is outside the measurement-critical path. End-to-end window transfer and analysis remain verification milestones rather than completed rev 0.1 claims.
 
-### Included in scope
+### Measurement-integrity principle
 
-* Two-layer Thin-Pod carrier PCB design.
-* Protected power-entry path, fuse provision and reverse-polarity protection.
-* Regulated 3.3 V power path and PFET-switched accelerometer supply.
-* ADXL1005 analogue sensor interface and conditioned signal path.
-* Electrical test points for bring-up and measurement.
-* Thin-Pod-authored mating interface for a Qorvo DWM3001-CDK.
-* Corrected carrier-board ground return for the DWM3001-CDK interface.
-* Editable KiCad source files, fabrication outputs, BOM and documentation.
+The Gateway architecture is intended to preserve raw vibration windows and their associated metadata before derived features or model outputs are generated. This keeps later DSP and TinyML results traceable to the acquired measurement, node identity, sampling configuration, transport-integrity state and processing version.
 
-### Outside scope
-
-* The Qorvo DWM3001-CDK itself as open hardware.
-* The Analog Devices ADXL1005 device or any vendor evaluation board as open hardware.
-* The Pololu S7V8F3 regulator module as open hardware.
-* The separately developed Thin-Pod Gateway.
-* STM32 NUCLEO-N657X0-Q, ESP32-C6 or Gateway-side hardware.
-* Implemented UWB communication, radio firmware or networking.
-* Gateway DSP, TinyML, anomaly detection or predictive-maintenance system claims.
-
-The commercial devices used by the board are identified as third-party components; they are not relicensed or represented as creator-designed open hardware.
-
-## Functional architecture
+The design principle is therefore:
 
 ```text
-Mechanical vibration
-        ↓
-ADXL1005 analogue accelerometer interface
-        ↓
-Analogue conditioning / filtered signal node
-        ↓
-Accessible test point and CDK ADC interface
-        ↓
-Commercial Qorvo DWM3001-CDK connection
-```
+raw vibration windows from the Pod;
+verified window transfer through the UWB subsystem;
+features and later models on the Gateway.
 
-Power is arranged as:
+## Revision identity
+
+The product release path is:
 
 ```text
-RAW\_IN → fuse provision → 1N5817 reverse-polarity protection
-       → Pololu S7V8F3 regulated 3.3 V rail
-       → PFET-switched accelerometer supply
+Thin-Pod Gateway rev 0.1
 ```
 
-## DWM3001-CDK ground-return correction
-
-During bring-up of an earlier pre-release manufactured prototype, the CDK did not establish the assumed functional ground return through the original power-entry arrangement alone. A temporary ground jumper allowed successful electrical bring-up and measurement of the sensor path.
-
-Before freezing the rev 0.1 open-hardware release, the CDK mating interface and carrier-board connection were corrected so that all relevant CDK ground connections resolve directly to the Thin-Pod `GND` net:
+The PCB already ordered for manufacture may carry the existing board/silkscreen identifier:
 
 ```text
-J1\_2    GND     ─┐
-J10\_6   GND\_1  ─┤
-J10\_9   GND\_2  ─┤
-J10\_14  GND\_3  ─┼── GND
-J10\_20  GND\_4  ─┤
-J10\_25  GND\_5  ─┘
+rev 0.1f
 ```
 
-The editable source and fabrication outputs in this repository include that correction. The temporary jumper is part of the prototype history and is **not** an assembly requirement for the released rev 0.1 design.
+For documentation purposes, `rev 0.1f` is treated as the ordered **pre-release fabrication build** within the Gateway rev 0.1 development cycle. It is not `rev 0.3`.
 
-## Validation status
+A later `rev 0.3` is reserved for an SMT/chip-down transition, potentially replacing development-board interfaces with more integrated hardware such as a castellated DWM3001C module. That work is explicitly deferred until the rev 0.1 Gateway carrier board and first communications path have been verified.
 
-The first manufactured pre-release prototype established that the core sensor-node approach is electrically viable. Measurements made during prototype bring-up included:
+## Intended Gateway architecture
 
-|Validation item|Result|Evidence status|
+```text
+Thin-Pod rev 0.1 sensor-node carrier PCB
+        ↓  future UWB vibration-window transport
+Qorvo DWM3001-CDK on Thin-Pod Gateway rev 0.1
+        ↓  host-interface route to be proven
+STM32 NUCLEO-N657X0-Q
+        ↓
+buffer capture / logging / future DSP and TinyML
+        ↓  optional onward interface
+Seeed Studio XIAO ESP32-C6
+```
+
+The architecture is deliberately modular. The DWM3001-CDK is treated as a commercially supplied UWB subsystem; the NUCLEO is treated as the Gateway-side host/supervisor; and the XIAO is treated as optional onward networking. The Gateway PCB does not claim those commercial modules as open hardware.
+
+## Current rev 0.1 carrier-board content
+
+|Reference|Commercial module or circuitry|Intended function|
 |-|-|-|
-|Manufactured PCB inspection and initial assembly|Completed|Documented in bring-up record and images|
-|Power-up after temporary CDK ground-return correction|Successful|Documented prototype result|
-|Switched accelerometer supply rail|Approximately 3.35 V measured|Documented prototype result|
-|Filtered analogue sensor output|Approximately 1.76 V measured at rest|Documented prototype result|
-|Mechanical excitation / tap response|Visible on oscilloscope|Documented prototype result|
-|Ground-return correction implemented in released KiCad source and Gerbers|Completed|Included in this release|
-|Physical re-test of the corrected copper implementation without jumper|To be recorded after manufacture of the corrected release board|Not claimed as completed|
+|`U1`|STM32 `NUCLEO-N657X0-Q` mounted through ST morpho-header interfaces|Main host processor and later analysis supervisor|
+|`U2`|Qorvo `DWM3001-CDK`|Gateway-side UWB development module|
+|`U3`|Seeed Studio `XIAO ESP32-C6`|Optional onward-networking module|
+|`R1`, `R2`|10 kΩ pull-up resistors|Idle-state control for chip-select lines|
+|`C1`, `C3`|100 nF decoupling capacitors|Local high-frequency supply decoupling|
+|`C2`, `C4`|10 µF capacitors|Local bulk decoupling|
+|`C5`|22 µF capacitor|Additional local bulk decoupling|
+|`TP1`–`TP13`|Test-point provision|Power and signal bring-up observability|
+|`H1`–`H4`|M3 mounting holes|Mechanical support|
 
-The prototype measurement evidence supports the power and analogue signal-chain design. The corrected ground-return implementation is present in the released design files; it is not represented as physically re-tested until a board manufactured from these release Gerbers has been assembled and measured.
+## Electrical interface summary
 
-## Repository contents
+The current PCB uses the NUCLEO `CN3` and `CN15` interfaces only. `CN3` provides the principal power and ground paths; `CN15` provides the SPI5 and control-signal route.
+
+### Power roles
+
+|Net / connection|Intended role|
+|-|-|
+|`5V\_GATEWAY` from NUCLEO `CN3.6`|Powers DWM3001-CDK through its 5 V input path and supplies XIAO `5V/VBUS`|
+|`3V3\_GATEWAY` from NUCLEO `CN3.16`|Auxiliary/pull-up rail; not the XIAO power input|
+|`GND`|Common reference across NUCLEO, DWM3001-CDK, XIAO and local decoupling|
+
+### NUCLEO to DWM3001-CDK signal route
+
+|Gateway net|NUCLEO connection|DWM3001-CDK connection|
+|-|-|-|
+|`SPI5\_SCK`|`CN15.11` / `PE15`|`J10.23` / `SPI1\_CLK`|
+|`SPI5\_MISO`|`CN15.13` / `PG1`|`J10.21` / `SPI1\_MISO`|
+|`SPI5\_MOSI`|`CN15.15`|`J10.19` / `SPI1\_MOSI`|
+|`DWM\_CS`|`CN15.17`|`J10.24` / `CS\_RPI`|
+|`DWM\_IRQ`|`CN15.16`|`J10.15`|
+|`DWM\_RESET`|`CN15.33`|`J10.12`|
+
+### NUCLEO to XIAO ESP32-C6 signal route
+
+|Gateway net|NUCLEO connection|XIAO connection|
+|-|-|-|
+|`SPI5\_SCK`|`CN15.11`|`D8` / `GPIO19` / `SCK`|
+|`SPI5\_MISO`|`CN15.13`|`D9` / `GPIO20` / `MISO`|
+|`SPI5\_MOSI`|`CN15.15`|`D10` / `GPIO18` / `MOSI`|
+|`C6\_CS`|`CN15.19`|`D3` / `GPIO21`|
+|`C6\_INT`|`CN15.5`|`D2` / `GPIO2`|
+|`5V\_GATEWAY`|`CN3.6`|`5V/VBUS`|
+|`GND`|Common ground|`GND`|
+
+The route above establishes a physical interface candidate. Firmware-level exchange over that route is a verification objective, not a completed claim.
+
+## Certification scope position
+
+A future OSHWA application for **Thin-Pod Gateway rev 0.1** would cover the creator-designed Gateway carrier PCB, its editable design source, fabrication outputs, BOM, documentation and any project-authored footprint/interface material.
+
+It would not claim the STM32 NUCLEO-N657X0-Q, Qorvo DWM3001-CDK or XIAO ESP32-C6 development modules themselves as open hardware. It would not imply that the already submitted `Thin-Pod rev 0.1` sensor-node certification application includes the Gateway.
+
+## Repository structure
 
 ```text
-Thin-Pod-rev0.1/
+Thin-Pod-Gateway-rev0.1/
 ├── README.md
 ├── LICENSE-HARDWARE.md
 ├── LICENSE-DOCUMENTATION.md
 │
 ├── hardware/
 │   ├── source/
-│   │   ├── Thin-Pod\_rev0.1.kicad\_pro
-│   │   ├── Thin-Pod\_rev0.1.kicad\_sch
-│   │   ├── Thin-Pod\_rev0.1.kicad\_pcb
+│   │   ├── Thin-Pod\_Gateway\_rev0.1.kicad\_pro
+│   │   ├── Thin-Pod\_Gateway\_rev0.1.kicad\_sch
+│   │   ├── Thin-Pod\_Gateway\_rev0.1.kicad\_pcb
 │   │   ├── fp-lib-table
 │   │   ├── sym-lib-table
-│   │   ├── footprints/
-│   │   │   └── ThinPod.pretty/
-│   │   │       └── ThinPod\_DWM3001CDK\_Mating\_Interface\_revA.kicad\_mod
-│   │   └── symbols/
-│   │       └── ThinPod.kicad\_sym
+│   │   └── footprints/
 │   │
 │   ├── fabrication/
 │   │   ├── gerbers/
 │   │   ├── drills/
-│   │   └── Thin-Pod\_rev0.1\_fabrication\_outputs.zip
+│   │   ├── Thin-Pod\_Gateway\_rev0.1\_fabrication\_outputs.zip
+│   │   └── RELEASE-MANIFEST.md
 │   │
 │   └── bom/
-│       ├── Thin-Pod_rev0.1_BOM.md
-│       └── Thin-Pod_rev0.1_BOM.csv
+│       ├── Thin-Pod\_Gateway\_rev0.1\_BOM.md
+│       └── Thin-Pod\_Gateway\_rev0.1\_BOM.csv
 │
 ├── docs/
 │   ├── certification-scope.md
+│   ├── gateway-bring-up-and-verification-protocol.md
+│   ├── system-interface-control-document.md
 │   ├── third-party-components.md
 │   ├── footprint-provenance.md
-│   ├── prototype-bring-up-and-release-correction.md
 │   ├── design-verification.md
 │   └── future-revisions.md
 │
 ├── images/
-│   ├── prototype-bring-up/
-│   ├── gerber-inspection/
-│   └── released-design/
+│   ├── fabrication/
+│   ├── bring-up/
+│   └── verification/
 │
 └── oshwa/
     └── application-record.md
 ```
 
-## Design and fabrication files
+## Documentation prepared during PCB manufacture
 
-|Resource|Location|Purpose|
-|-|-|-|
-|Editable KiCad project, schematic and PCB|[`hardware/source/`](hardware/source/)|Preferred source for modification|
-|Project-local footprints and symbols|[`hardware/source/`](hardware/source/)|Portable project dependencies|
-|Gerber and drill files|[`hardware/fabrication/`](hardware/fabrication/)|PCB fabrication outputs|
-|Bill of materials|[`hardware/bom/`](hardware/bom/)|Assembly and sourcing record|
-|Certification and design documentation|[`docs/`](docs/)|Scope, provenance and validation record|
-|OSHWA application record|[`oshwa/application-record.md`](oshwa/application-record.md)|Public submission details and eventual UID|
-
-The editable KiCad source files are the normative design source. Gerbers and drill files are derived fabrication outputs supplied for convenience and reproducibility.
-
-## Bill of materials
-
-The release BOM covers the Thin-Pod rev 0.1 sensor-node carrier board only. It identifies the fitted PCB components, commercial subassemblies, component values, footprints and sourcing information required to reproduce this release.
-
-The Gateway, Gateway-side radio components, ESP32 networking hardware and analytic processing hardware are not part of this BOM because they are outside the rev 0.1 certification scope.
-
-See:
-
-- [`hardware/bom/Thin-Pod_rev0.1_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
-- [`hardware/bom/Thin-Pod_rev0.1_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
-
-## Third-party components
-
-Thin-Pod rev 0.1 is an open carrier-board design built around commercially available components. The following items are used or interfaced by the design but are not claimed as open-hardware contributions of this project:
-
-|Component|Function in Thin-Pod rev 0.1|Treatment in this release|
-|-|-|-|
-|Analog Devices ADXL1005-based accelerometer implementation|Analogue vibration sensing|Commercial third-party component; interface documented|
-|Qorvo DWM3001-CDK|Commercial module connected through the pod-side mating interface|Commercial third-party development board; not relicensed|
-|Pololu S7V8F3|Regulated 3.3 V supply module|Commercial third-party module|
-|ZVP2106A and standard passive/protection components|Power switching and analogue support circuitry|Commercial bought-in components identified in BOM|
-
-Vendor documentation is referenced for sourcing and interface understanding; vendor CAD files, proprietary board layouts and vendor 3D models are not distributed under the Thin-Pod hardware licence.
-
-## CDK mating-interface footprint provenance
-
-The published footprint:
-
-```text
-hardware/source/footprints/ThinPod.pretty/
-└── ThinPod\_DWM3001CDK\_Mating\_Interface\_revA.kicad\_mod
-```
-
-is a Thin-Pod project-local mating-interface footprint for the commercially supplied DWM3001-CDK. It is intended to describe only the mechanical and electrical connection required by the Thin-Pod carrier PCB.
-
-The release footprint was independently constructed in KiCad using standard connector geometry, publicly available interface information and mechanical verification against a purchased CDK unit. It does not distribute a Qorvo-supplied CAD footprint, CDK PCB design or vendor 3D model.
-
-## Opening and modifying the design
-
-The source design is maintained in KiCad 10.0.1. The project is intended to be portable through project-local symbol and footprint tables.
-
-A reproducible modification workflow is:
-
-1. Open `hardware/source/Thin-Pod\_rev0.1.kicad\_pro` in KiCad 10.0.1 or a compatible later version.
-2. Confirm that project-local symbol and footprint libraries resolve through `sym-lib-table` and `fp-lib-table`.
-3. Run schematic ERC and PCB DRC before fabrication.
-4. Regenerate Gerber and drill outputs after any accepted design change.
-5. Inspect copper, solder mask, silkscreen, board outline and drill alignment in KiCad Gerber Viewer before ordering.
-
-## Documentation and verification record
-
-|Document|Content|
+|Document|Purpose|
 |-|-|
-|[`docs/certification-scope.md`](docs/certification-scope.md)|Formal inclusion and exclusion boundary for certification|
-|[`docs/third-party-components.md`](docs/third-party-components.md)|Commercial component and vendor-material notice|
-|[`docs/footprint-provenance.md`](docs/footprint-provenance.md)|Origin and verification of the CDK mating-interface footprint|
-|[`docs/prototype-bring-up-and-release-correction.md`](docs/prototype-bring-up-and-release-correction.md)|Prototype test result and ground-return design correction|
-|[`docs/design-verification.md`](docs/design-verification.md)|Electrical and fabrication verification record|
-|[`docs/future-revisions.md`](docs/future-revisions.md)|Items explicitly outside this release|
+|[`docs/certification-scope.md`](docs/certification-scope.md)|Establishes the separate Gateway rev 0.1 OSHWA boundary|
+|[`docs/gateway-bring-up-and-verification-protocol.md`](docs/gateway-bring-up-and-verification-protocol.md)|Defines the physical and firmware test sequence for board arrival|
+|[`docs/system-interface-control-document.md`](docs/system-interface-control-document.md)|Defines the intended boundary between Thin-Pod rev 0.1 and Gateway rev 0.1|
 
-## Licensing
+## Release and OSHWA gate
 
-|Material|Licence|File|
-|-|-|-|
-|Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENSE-HARDWARE.md`](LICENSE-HARDWARE.md)|
-|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCUMENTATION.md`](LICENSE-DOCUMENTATION.md)|
-|Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
+No Gateway OSHWA application should be submitted before:
 
-Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences.
+1. the PCB has arrived and been inspected;
+2. unpowered continuity and resistance checks have passed;
+3. module power paths have been validated in a staged bring-up;
+4. the source, Gerbers, BOM and footprint provenance have been reconciled;
+5. any pre-release correction discovered in testing has been incorporated into the release definition; and
+6. a clean Gateway rev 0.1 release tag has been created.
 
-## OSHWA certification record
-
-This repository is structured as the documentation source for an OSHWA certification application for:
-
-|Field|Value|
-|-|-|
-|Project name|Thin-Pod|
-|Project version|0.1|
-|Primary project type|Electronics|
-|Certification scope|Vibration-sensor node carrier PCB|
-|Hardware licence|CERN-OHL-W-2.0|
-|Documentation licence|CC-BY-4.0|
-|Software licence|No software required or supplied for the certified hardware scope|
-|OSHWA UID|Pending submission|
-
-Once a certification UID is issued, it will be recorded in [`oshwa/application-record.md`](oshwa/application-record.md) and displayed here in accordance with the OSHWA certification mark requirements.
-
-## Safety and regulatory note
-
-Thin-Pod rev 0.1 is experimental sensing hardware. It has not been certified for installation on safety-critical machinery, hazardous environments or regulated industrial monitoring applications. Appropriate isolation, current-limited bench testing, secure mechanical mounting and safe working practices are required during evaluation.
-
-This open-hardware release does not imply EMC, radio, electrical-safety or product-regulatory approval. Any commercially supplied radio or development module remains subject to its own vendor documentation and applicable regulatory conditions.
+The most defensible Gateway certification position is therefore not ‘submitted while waiting for the PCB’, but ‘designed and documented as an open-hardware candidate, physically verified before certification’.
 
 ## References
 
-* [OSHWA Certification Requirements](https://certification.oshwa.org/requirements.html)
-* [OSHWA Certification Documentation Process](https://certification.oshwa.org/process/documentation.html)
-* [OSHWA Certification Application](https://application.oshwa.org/apply)
-* [Qorvo DWM3001-CDK product page](https://www.qorvo.com/products/p/DWM3001CDK)
-* [Analog Devices ADXL1005 product page](https://www.analog.com/en/products/adxl1005.html)
-
-\---
-
-**Thin-Pod rev 0.1** is a deliberately bounded first open-hardware release: a documented vibration-sensor node PCB with a clear commercial-module boundary, an independently authored interface footprint and a release design that incorporates the principal lesson discovered during prototype bring-up.
+* STMicroelectronics, `NUCLEO-N657X0-Q` product page and board documentation: [https://www.st.com/en/evaluation-tools/nucleo-n657x0-q.html](https://www.st.com/en/evaluation-tools/nucleo-n657x0-q.html)
+* Qorvo, `DWM3001CDK` product page and product brief: [https://www.qorvo.com/products/p/DWM3001CDK](https://www.qorvo.com/products/p/DWM3001CDK)
+* Seeed Studio, `XIAO ESP32C6` documentation and pin map: [https://wiki.seeedstudio.com/xiao\_esp32c6\_getting\_started/](https://wiki.seeedstudio.com/xiao_esp32c6_getting_started/)
+* OSHWA Certification Requirements: [https://certification.oshwa.org/requirements.html](https://certification.oshwa.org/requirements.html)
+* OSHWA Documentation Guidance: [https://certification.oshwa.org/process/documentation.html](https://certification.oshwa.org/process/documentation.html)
 
