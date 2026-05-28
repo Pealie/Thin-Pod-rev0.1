@@ -2,7 +2,7 @@
 
 <p align="left">
   <a href="https://certification.oshwa.org/uk000091.html">
-    <img src="images/certification/oshwa2-uk000091.png" width="260" alt="Open Source Hardware Association certification mark: UK000091">
+    <img src="images/certification/oshwa-uk000091.png" width="260" alt="Open Source Hardware Association certification mark: UK000091">
   </a>
 </p>
 <p align="left">
