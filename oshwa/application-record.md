@@ -204,7 +204,7 @@ The application documentation is supplied through the release repository. Its in
 |CDK footprint provenance boundary established|Completed|May 2026|
 |Ground-return correction incorporated into release design|Completed before application submission|May 2026|
 |OSHWA certification application submitted|Completed|26 May 2026|
-|OSHWA UID received or confirmed in directory|**Issued**| 28 May 2026 - **UK000091**|
+|OSHWA UID received or confirmed in directory|**Issued**| 28 May 2026 / **UK000091**|
 |Certification identifier added to README and this record|Pending|Complete after UID confirmation|
 |Optional corrected-PCB physical re-verification|Pending / future evidence update|Record only when completed|
 
