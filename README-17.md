@@ -4,7 +4,7 @@
 
 <p align="left">
   <a href="https://certification.oshwa.org/uk000091.html">
-    <img src="images/certification/oshwa-uk000091.png" width="295" alt="Open Source Hardware Association certification mark: UK000091">
+    <img src="images/certification/oshwa-uk000091.png" width="260" alt="Open Source Hardware Association certification mark: UK000091">
   </a>
 </p>
 
@@ -14,10 +14,6 @@
 </p>
 
 
-
-
-
-**Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
 
 ## Overview
 
