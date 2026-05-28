@@ -1,14 +1,11 @@
-# Thin-Pod rev 0.1
+## Thin-Pod rev 0.1
 
-**Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
-
-<p align="center">
+<p align="left">
   <a href="https://certification.oshwa.org/uk000091.html">
-    <img src="images/certification/oshwa-uk000091.png" width="295" alt="Open Source Hardware Association certification mark: UK000091">
+    <img src="images/certification/oshwa-uk000091.png" width="260" alt="Open Source Hardware Association certification mark: UK000091">
   </a>
 </p>
-
-<p align="center">
+<p align="left">
   <strong>OSHWA Certified Open Source Hardware · UK000091</strong><br>
   Certified 28 May 2026 · <a href="https://certification.oshwa.org/uk000091.html">View certification record</a>
 </p>
@@ -63,7 +60,7 @@ Commercial Qorvo DWM3001-CDK connection
 Power is arranged as:
 
 ```text
-RAW\\\_IN → fuse provision → 1N5817 reverse-polarity protection
+RAW_IN → fuse provision → 1N5817 reverse-polarity protection
        → Pololu S7V8F3 regulated 3.3 V rail
        → PFET-switched accelerometer supply
 ```
@@ -75,12 +72,12 @@ During bring-up of an earlier pre-release manufactured prototype, the CDK did no
 Before freezing the rev 0.1 open-hardware release, the CDK mating interface and carrier-board connection were corrected so that all relevant CDK ground connections resolve directly to the Thin-Pod `GND` net:
 
 ```text
-J1\\\_2    GND     ─┐
-J10\\\_6   GND\\\_1  ─┤
-J10\\\_9   GND\\\_2  ─┤
-J10\\\_14  GND\\\_3  ─┼── GND
-J10\\\_20  GND\\\_4  ─┤
-J10\\\_25  GND\\\_5  ─┘
+J1_2    GND    ─┐
+J1_6    GND_1  ─┤
+J10_9   GND_2  ─┤
+J10_14  GND_3  ─┼── GND
+J10_20  GND_4  ─┤
+J10_25  GND_5  ─┘
 ```
 
 The editable source and fabrication outputs in this repository include that correction. The temporary jumper is part of the prototype history and is **not** an assembly requirement for the released rev 0.1 design.
@@ -111,25 +108,25 @@ Thin-Pod-rev0.1/
 │
 ├── hardware/
 │   ├── source/
-│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_pro
-│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_sch
-│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_pcb
+│   │   ├── Thin-Pod_rev0.1.kicad_pro
+│   │   ├── Thin-Pod_rev0.1.kicad_sch
+│   │   ├── Thin-Pod_rev0.1.kicad_pcb
 │   │   ├── fp-lib-table
 │   │   ├── sym-lib-table
 │   │   ├── footprints/
 │   │   │   └── ThinPod.pretty/
-│   │   │       └── ThinPod\\\_DWM3001CDK\\\_Mating\\\_Interface\\\_revA.kicad\\\_mod
+│   │   │       └── ThinPod_DWM3001CDK_Mating_Interface_revA.kicad_mod
 │   │   └── symbols/
-│   │       └── ThinPod.kicad\\\_sym
+│   │       └── ThinPod.kicad_sym
 │   │
 │   ├── fabrication/
 │   │   ├── gerbers/
 │   │   ├── drills/
-│   │   └── Thin-Pod\\\_rev0.1\\\_fabrication\\\_outputs.zip
+│   │   └── Thin-Pod_rev0.1_fabrication_outputs.zip
 │   │
 │   └── bom/
-│       ├── Thin-Pod\_rev0.1\_BOM.md
-│       └── Thin-Pod\_rev0.1\_BOM.csv
+│       ├── Thin-Pod_rev0.1_BOM.md
+│       └── Thin-Pod_rev0.1_BOM.csv
 │
 ├── docs/
 │   ├── certification-scope.md
@@ -171,8 +168,8 @@ The Gateway, Gateway-side radio components, ESP32 networking hardware and analyt
 
 See:
 
-* [`hardware/bom/Thin-Pod\_rev0.1\_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
-* [`hardware/bom/Thin-Pod\_rev0.1\_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
+* [`hardware/bom/Thin-Pod_rev0.1_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
+* [`hardware/bom/Thin-Pod_rev0.1_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
 
 ## Third-party components
 
@@ -193,7 +190,7 @@ The published footprint:
 
 ```text
 hardware/source/footprints/ThinPod.pretty/
-└── ThinPod\\\_DWM3001CDK\\\_Mating\\\_Interface\\\_revA.kicad\\\_mod
+└── ThinPod_DWM3001CDK_Mating_Interface_revA.kicad_mod
 ```
 
 is a Thin-Pod project-local mating-interface footprint for the commercially supplied DWM3001-CDK. It is intended to describe only the mechanical and electrical connection required by the Thin-Pod carrier PCB.
@@ -227,8 +224,8 @@ A reproducible modification workflow is:
 
 |Material|Licence|File|
 |-|-|-|
-|Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENSE-HARDWARE.md`](LICENSE-HARDWARE.md)|
-|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCUMENTATION.md`](LICENSE-DOCUMENTATION.md)|
+|Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENCE-HARDWARE.md`](LICENCE-HARDWARE.md)|
+|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENCE-DOCS.md`](LICENCE-DOCS.md)|
 |Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
 
 Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences. The OSHWA certification mark is used to identify this certified release and is not relicensed as Thin-Pod documentation.
