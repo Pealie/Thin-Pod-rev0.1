@@ -12,7 +12,7 @@ The design is published as an open-hardware PCB release: editable KiCad source f
 
 ## Certification scope
 
-The OSHWA certification application for **Thin-Pod rev 0.1** covers the creator-designed sensor-node carrier PCB and its release documentation.
+The OSHWA certification for **Thin-Pod rev 0.1** covers the creator-designed sensor-node carrier PCB and its release documentation.
 
 ### Included in scope
 
@@ -235,7 +235,7 @@ This repository is structured as the documentation source for an OSHWA certifica
 |Hardware licence|CERN-OHL-W-2.0|
 |Documentation licence|CC-BY-4.0|
 |Software licence|No software required or supplied for the certified hardware scope|
-|OSHWA UID|Pending submission|
+|OSHWA UID|OSHWA UID UK000091|
 
 Once a certification UID is issued, it will be recorded in [`oshwa/application-record.md`](oshwa/application-record.md) and displayed here in accordance with the OSHWA certification mark requirements.
 
