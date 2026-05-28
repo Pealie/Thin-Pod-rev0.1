@@ -2,13 +2,13 @@
 
 
 
-<p align="center">
+<p align="left">
   <a href="https://certification.oshwa.org/uk000091.html">
     <img src="images/certification/oshwa-uk000091.png" width="295" alt="Open Source Hardware Association certification mark: UK000091">
   </a>
 </p>
 
-<p align="center">
+<p align="left">
   <strong>OSHWA Certified Open Source Hardware · UK000091</strong><br>
   Certified 28 May 2026 · <a href="https://certification.oshwa.org/uk000091.html">View certification record</a>
 </p>
