@@ -2,7 +2,16 @@
 
 **Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
 
-**Certification status:** OSHWA (Open Source Hardware Association) certification UID UK000091.
+<p align="center">
+  <a href="https://certification.oshwa.org/uk000091.html">
+    <img src="images/certification/oshwa-uk000091.png" width="295" alt="Open Source Hardware Association certification mark: UK000091">
+  </a>
+</p>
+
+<p align="center">
+  <strong>OSHWA Certified Open Source Hardware · UK000091</strong><br>
+  Certified 28 May 2026 · <a href="https://certification.oshwa.org/uk000091.html">View certification record</a>
+</p>
 
 ## Overview
 
@@ -54,7 +63,7 @@ Commercial Qorvo DWM3001-CDK connection
 Power is arranged as:
 
 ```text
-RAW\_IN → fuse provision → 1N5817 reverse-polarity protection
+RAW\\\_IN → fuse provision → 1N5817 reverse-polarity protection
        → Pololu S7V8F3 regulated 3.3 V rail
        → PFET-switched accelerometer supply
 ```
@@ -66,12 +75,12 @@ During bring-up of an earlier pre-release manufactured prototype, the CDK did no
 Before freezing the rev 0.1 open-hardware release, the CDK mating interface and carrier-board connection were corrected so that all relevant CDK ground connections resolve directly to the Thin-Pod `GND` net:
 
 ```text
-J1\_2    GND     ─┐
-J10\_6   GND\_1  ─┤
-J10\_9   GND\_2  ─┤
-J10\_14  GND\_3  ─┼── GND
-J10\_20  GND\_4  ─┤
-J10\_25  GND\_5  ─┘
+J1\\\_2    GND     ─┐
+J10\\\_6   GND\\\_1  ─┤
+J10\\\_9   GND\\\_2  ─┤
+J10\\\_14  GND\\\_3  ─┼── GND
+J10\\\_20  GND\\\_4  ─┤
+J10\\\_25  GND\\\_5  ─┘
 ```
 
 The editable source and fabrication outputs in this repository include that correction. The temporary jumper is part of the prototype history and is **not** an assembly requirement for the released rev 0.1 design.
@@ -102,25 +111,25 @@ Thin-Pod-rev0.1/
 │
 ├── hardware/
 │   ├── source/
-│   │   ├── Thin-Pod\_rev0.1.kicad\_pro
-│   │   ├── Thin-Pod\_rev0.1.kicad\_sch
-│   │   ├── Thin-Pod\_rev0.1.kicad\_pcb
+│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_pro
+│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_sch
+│   │   ├── Thin-Pod\\\_rev0.1.kicad\\\_pcb
 │   │   ├── fp-lib-table
 │   │   ├── sym-lib-table
 │   │   ├── footprints/
 │   │   │   └── ThinPod.pretty/
-│   │   │       └── ThinPod\_DWM3001CDK\_Mating\_Interface\_revA.kicad\_mod
+│   │   │       └── ThinPod\\\_DWM3001CDK\\\_Mating\\\_Interface\\\_revA.kicad\\\_mod
 │   │   └── symbols/
-│   │       └── ThinPod.kicad\_sym
+│   │       └── ThinPod.kicad\\\_sym
 │   │
 │   ├── fabrication/
 │   │   ├── gerbers/
 │   │   ├── drills/
-│   │   └── Thin-Pod\_rev0.1\_fabrication\_outputs.zip
+│   │   └── Thin-Pod\\\_rev0.1\\\_fabrication\\\_outputs.zip
 │   │
 │   └── bom/
-│       ├── Thin-Pod_rev0.1_BOM.md
-│       └── Thin-Pod_rev0.1_BOM.csv
+│       ├── Thin-Pod\_rev0.1\_BOM.md
+│       └── Thin-Pod\_rev0.1\_BOM.csv
 │
 ├── docs/
 │   ├── certification-scope.md
@@ -131,6 +140,8 @@ Thin-Pod-rev0.1/
 │   └── future-revisions.md
 │
 ├── images/
+│   ├── certification/
+│   │   └── oshwa-uk000091.png
 │   ├── prototype-bring-up/
 │   ├── gerber-inspection/
 │   └── released-design/
@@ -148,7 +159,7 @@ Thin-Pod-rev0.1/
 |Gerber and drill files|[`hardware/fabrication/`](hardware/fabrication/)|PCB fabrication outputs|
 |Bill of materials|[`hardware/bom/`](hardware/bom/)|Assembly and sourcing record|
 |Certification and design documentation|[`docs/`](docs/)|Scope, provenance and validation record|
-|OSHWA application record|[`oshwa/application-record.md`](oshwa/application-record.md)|Public submission details and eventual UID|
+|OSHWA application and certification record|[`oshwa/application-record.md`](oshwa/application-record.md)|Public submission details and certification UID|
 
 The editable KiCad source files are the normative design source. Gerbers and drill files are derived fabrication outputs supplied for convenience and reproducibility.
 
@@ -160,8 +171,8 @@ The Gateway, Gateway-side radio components, ESP32 networking hardware and analyt
 
 See:
 
-- [`hardware/bom/Thin-Pod_rev0.1_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
-- [`hardware/bom/Thin-Pod_rev0.1_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
+* [`hardware/bom/Thin-Pod\_rev0.1\_BOM.md`](hardware/bom/Thin-Pod_rev0.1_BOM.md)
+* [`hardware/bom/Thin-Pod\_rev0.1\_BOM.csv`](hardware/bom/Thin-Pod_rev0.1_BOM.csv)
 
 ## Third-party components
 
@@ -182,7 +193,7 @@ The published footprint:
 
 ```text
 hardware/source/footprints/ThinPod.pretty/
-└── ThinPod\_DWM3001CDK\_Mating\_Interface\_revA.kicad\_mod
+└── ThinPod\\\_DWM3001CDK\\\_Mating\\\_Interface\\\_revA.kicad\\\_mod
 ```
 
 is a Thin-Pod project-local mating-interface footprint for the commercially supplied DWM3001-CDK. It is intended to describe only the mechanical and electrical connection required by the Thin-Pod carrier PCB.
@@ -195,7 +206,7 @@ The source design is maintained in KiCad 10.0.1. The project is intended to be p
 
 A reproducible modification workflow is:
 
-1. Open `hardware/source/Thin-Pod\_rev0.1.kicad\_pro` in KiCad 10.0.1 or a compatible later version.
+1. Open `hardware/source/Thin-Pod\\\_rev0.1.kicad\\\_pro` in KiCad 10.0.1 or a compatible later version.
 2. Confirm that project-local symbol and footprint libraries resolve through `sym-lib-table` and `fp-lib-table`.
 3. Run schematic ERC and PCB DRC before fabrication.
 4. Regenerate Gerber and drill outputs after any accepted design change.
@@ -220,11 +231,11 @@ A reproducible modification workflow is:
 |Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCUMENTATION.md`](LICENSE-DOCUMENTATION.md)|
 |Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
 
-Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences.
+Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences. The OSHWA certification mark is used to identify this certified release and is not relicensed as Thin-Pod documentation.
 
 ## OSHWA certification record
 
-This repository is structured as the documentation source for an OSHWA certification application for:
+**Thin-Pod rev 0.1 is certified open source hardware under OSHWA UID UK000091.** The certification mark displayed near the top of this README identifies this specific certified release and links to the public OSHWA record.
 
 |Field|Value|
 |-|-|
@@ -232,12 +243,14 @@ This repository is structured as the documentation source for an OSHWA certifica
 |Project version|0.1|
 |Primary project type|Electronics|
 |Certification scope|Vibration-sensor node carrier PCB|
+|Certification date|28 May 2026|
 |Hardware licence|CERN-OHL-W-2.0|
 |Documentation licence|CC-BY-4.0|
 |Software licence|No software required or supplied for the certified hardware scope|
-|OSHWA UID|OSHWA UID UK000091|
+|OSHWA UID|UK000091|
+|Official record|[certification.oshwa.org/uk000091](https://certification.oshwa.org/uk000091.html)|
 
-Once a certification UID is issued, it will be recorded in [`oshwa/application-record.md`](oshwa/application-record.md) and displayed here in accordance with the OSHWA certification mark requirements.
+The certification UID and matching mark are retained in this README and in [`oshwa/application-record.md`](oshwa/application-record.md), keeping the boundary of the certified rev 0.1 release explicit.
 
 ## Safety and regulatory note
 
@@ -247,6 +260,8 @@ This open-hardware release does not imply EMC, radio, electrical-safety or produ
 
 ## References
 
+* [Thin-Pod OSHWA Certification Record — UK000091](https://certification.oshwa.org/uk000091.html)
+* [OSHWA Certification Mark Usage Guide](https://certification.oshwa.org/mark-usage.html)
 * [OSHWA Certification Requirements](https://certification.oshwa.org/requirements.html)
 * [OSHWA Certification Documentation Process](https://certification.oshwa.org/process/documentation.html)
 * [OSHWA Certification Application](https://application.oshwa.org/apply)
