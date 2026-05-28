@@ -15,6 +15,8 @@
 
 
 
+
+
 **Open-hardware vibration-sensor node carrier PCB for rotating-machinery experiments**
 
 ## Overview
