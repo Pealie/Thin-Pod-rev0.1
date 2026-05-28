@@ -203,7 +203,7 @@ The source design is maintained in KiCad 10.0.1. The project is intended to be p
 
 A reproducible modification workflow is:
 
-1. Open `hardware/source/Thin-Pod\\\_rev0.1.kicad\\\_pro` in KiCad 10.0.1 or a compatible later version.
+1. Open `hardware/source/Thin-Pod_rev0.1.kicad_pro` in KiCad 10.0.1 or a compatible later version.
 2. Confirm that project-local symbol and footprint libraries resolve through `sym-lib-table` and `fp-lib-table`.
 3. Run schematic ERC and PCB DRC before fabrication.
 4. Regenerate Gerber and drill outputs after any accepted design change.
