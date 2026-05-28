@@ -72,7 +72,7 @@ During bring-up of an earlier pre-release manufactured prototype, the CDK did no
 Before freezing the rev 0.1 open-hardware release, the CDK mating interface and carrier-board connection were corrected so that all relevant CDK ground connections resolve directly to the Thin-Pod `GND` net:
 
 ```text
-J1_2    GND     ─┐
+J1_2    GND    ─┐
 J1_6    GND_1  ─┤
 J10_9   GND_2  ─┤
 J10_14  GND_3  ─┼── GND
@@ -225,7 +225,7 @@ A reproducible modification workflow is:
 |Material|Licence|File|
 |-|-|-|
 |Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENSE-HARDWARE.md`](LICENSE-HARDWARE.md)|
-|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCUMENTATION.md`](LICENSE-DOCUMENTATION.md)|
+|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCS.md`](LICENSE-DOCS.md)|
 |Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
 
 Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences. The OSHWA certification mark is used to identify this certified release and is not relicensed as Thin-Pod documentation.
