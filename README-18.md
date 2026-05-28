@@ -224,8 +224,8 @@ A reproducible modification workflow is:
 
 |Material|Licence|File|
 |-|-|-|
-|Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENSE-HARDWARE.md`](LICENSE-HARDWARE.md)|
-|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENSE-DOCS.md`](LICENSE-DOCS.md)|
+|Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENCE-HARDWARE.md`](LICENCE-HARDWARE.md)|
+|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENCE-DOCS.md`](LICENCE-DOCS.md)|
 |Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
 
 Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences. The OSHWA certification mark is used to identify this certified release and is not relicensed as Thin-Pod documentation.
