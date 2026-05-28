@@ -5,7 +5,7 @@
 **Responsible individual:** Neil Thomson / Pealie  
 **Repository:** [Pealie/Thin-Pod-rev0.1](https://github.com/Pealie/Thin-Pod-rev0.1)  
 **Application status:** Submitted to the Open Source Hardware Association (OSHWA) certification programme  
-**Submission date:** 26 May 2026  
+**Certification date:** 28 May 2026  
 **OSHWA UID:** OSHWA UID UK000091  
 **Document status:** Public application record
 
