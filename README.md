@@ -63,7 +63,7 @@ The infrastructure concerns addressed by this release are measurement integrity,
 
 Only the Thin-Pod rev 0.1 sensing-node carrier PCB and its release documentation are included in the certified open-hardware scope. The ADC-capable commercial module interface is documented as part of the board design, but the commercial module itself is not claimed as open hardware.
 
-Gateway transport, UWB communications, networking, DSP, TinyML, anomaly detection and maintenance-diagnostic workflows are shown here to clarify the intended system context.They are part of the wider Thin-Pod development direction, but remain outside the certified rev 0.1 hardware release.
+Gateway transport, UWB communications, networking, DSP, TinyML, anomaly detection and maintenance-diagnostic workflows are shown here to clarify the intended system context. They are part of the wider Thin-Pod development direction, but remain outside the certified rev 0.1 hardware release.
 
 ## Functional architecture
 
@@ -126,7 +126,7 @@ The prototype measurement evidence supports the power and analogue signal-chain 
 Thin-Pod-rev0.1/
 ├── README.md
 ├── LICENCE-HARDWARE.md
-├── LICENCE-DOCs.md
+├── LICENCE-DOCS.md
 │
 ├── hardware/
 │   ├── source/
