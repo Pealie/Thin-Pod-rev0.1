@@ -43,11 +43,27 @@ The OSHWA certification for **Thin-Pod rev 0.1** covers the creator-designed sen
 
 The commercial devices used by the board are identified as third-party components; they are not relicensed or represented as creator-designed open hardware.
 
-## Infrastructure context
+## System role and infrastructure context
 
-Thin-Pod rev 0.1 is the sensing-node hardware foundation for a broader experimental condition-monitoring architecture. Its role is to provide a reproducible, inspectable and electrically verified vibration-measurement endpoint for rotating machinery.
+Thin-Pod rev 0.1 is the sensing-node hardware layer within a broader experimental condition-monitoring architecture. Its immediate role is to provide a reproducible, inspectable and electrically verified vibration-measurement endpoint for motors, pumps, fans, gearboxes and similar rotating machinery.
 
-The infrastructure concerns addressed by this release are measurement integrity, power-path robustness, interface definition, third-party component boundaries, traceable validation evidence and manufacturable open-hardware documentation. Gateway transport, DSP, TinyML and predictive-maintenance workflows are intentionally outside the certified rev 0.1 scope, but this board is designed to provide the physical measurement layer on which those later infrastructure functions can be built.
+```
+Machine / motor / pump
+        ↓
+Thin-Pod rev 0.1 sensing node
+        ↓
+ADC / UWB-capable commercial module interface
+        ↓
+Gateway transport and analysis layer
+        ↓
+Maintenance telemetry / diagnostic workflow
+```
+
+The infrastructure concerns addressed by this release are measurement integrity, power-path robustness, interface definition, third-party component boundaries, traceable validation evidence and manufacturable open-hardware documentation.
+
+Only the Thin-Pod rev 0.1 sensing-node carrier PCB and its release documentation are included in the certified open-hardware scope. The ADC-capable commercial module interface is documented as part of the board design, but the commercial module itself is not claimed as open hardware.
+
+Gateway transport, implemented UWB communications, networking, DSP, TinyML, anomaly detection and maintenance-diagnostic workflows are shown here to clarify the intended system context. They are part of the wider Thin-Pod development direction, but remain outside the certified rev 0.1 hardware release.
 
 ## Functional architecture
 
@@ -70,26 +86,6 @@ RAW_IN → fuse provision → 1N5817 reverse-polarity protection
        → Pololu S7V8F3 regulated 3.3 V rail
        → PFET-switched accelerometer supply
 ```
-
-## System role
-
-Thin-Pod rev 0.1 is the sensing-node hardware layer within a broader experimental condition-monitoring architecture. Its certified scope is limited to the creator-designed vibration-sensor carrier PCB, its documented power path, analogue accelerometer interface, test points, mating interface and release documentation.
-
-```text
-Machine / motor / pump
-        ↓
-Thin-Pod rev 0.1 sensing node
-        ↓
-ADC / UWB-capable commercial module interface
-        ↓
-Gateway transport and analysis layer
-        ↓
-Maintenance telemetry / diagnostic workflow
-```
-
-Only the Thin-Pod rev 0.1 sensing-node carrier PCB and its release documentation are included in the certified open-hardware scope. The ADC-capable commercial module interface is documented as part of the board design, but the commercial module itself is not claimed as open hardware.
-
-Gateway transport, implemented UWB communications, networking, DSP, TinyML, anomaly detection and maintenance-diagnostic workflows are part of the wider Thin-Pod development direction. They are shown here to clarify the intended system context, but they are outside the certified rev 0.1 hardware release.
 
 ## DWM3001-CDK ground-return correction
 
@@ -129,8 +125,8 @@ The prototype measurement evidence supports the power and analogue signal-chain 
 ```text
 Thin-Pod-rev0.1/
 ├── README.md
-├── LICENSE-HARDWARE.md
-├── LICENSE-DOCUMENTATION.md
+├── LICENCE-HARDWARE.md
+├── LICENCE-DOCUMENTATION.md
 │
 ├── hardware/
 │   ├── source/
