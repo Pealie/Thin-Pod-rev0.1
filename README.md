@@ -16,7 +16,7 @@ Thin-Pod rev 0.1 is a compact analogue vibration-sensing carrier board intended 
 
 The design is published as an open-hardware PCB release: editable KiCad source files, project-local library files, fabrication outputs, bill of materials and verification documentation are provided in this repository.
 
-The release is intentionally bounded: its value lies in producing a reproducible, inspectable measurement endpoint whose power path, signal path, interface assumptions and validation evidence can support later Gateway-side analysis, reporting and evaluation work without overstating the certified hardware scope.
+The release is intentionally bounded: its value lies in producing a reproducible, inspectable measurement endpoint whose power path, signal path, interface assumptions and validation evidence can support later Gateway-side analysis, reporting and evaluation work within a clearly defined certified hardware boundary.
 
 ## Certification scope
 
