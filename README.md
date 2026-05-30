@@ -41,8 +41,8 @@ The OSHWA certification for **Thin-Pod rev 0.1** covers the creator-designed sen
 * The separately developed Thin-Pod Gateway.
 * STM32 NUCLEO-N657X0-Q, ESP32-C6 or Gateway-side hardware.
 * Implemented UWB communication, radio firmware or networking.
-* Gateway DSP, TinyML, anomaly detection or predictive-maintenance system claims.
-* AI-assisted maintenance reporting, structured diagnostic reports or autonomous maintenance decisions.
+* Gateway-side DSP, TinyML inference, anomaly detection or predictive-maintenance classification.
+* AI-assisted maintenance reporting, structured evidence-bound reports or autonomous maintenance decisions.
 
 The commercial devices used by the board are identified as third-party components; they are not relicensed or represented as creator-designed open hardware.
 
