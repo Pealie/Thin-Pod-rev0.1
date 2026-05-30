@@ -126,7 +126,7 @@ The prototype measurement evidence supports the power and analogue signal-chain 
 Thin-Pod-rev0.1/
 ├── README.md
 ├── LICENCE-HARDWARE.md
-├── LICENCE-DOCS.md
+├── LICENCE-DOCUMENTATION.md
 │
 ├── hardware/
 │   ├── source/
