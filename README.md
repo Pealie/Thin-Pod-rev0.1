@@ -16,6 +16,8 @@ Thin-Pod rev 0.1 is a compact analogue vibration-sensing carrier board intended 
 
 The design is published as an open-hardware PCB release: editable KiCad source files, project-local library files, fabrication outputs, bill of materials and verification documentation are provided in this repository.
 
+The release is intentionally bounded: its value lies in producing a reproducible, inspectable measurement endpoint whose power path, signal path, interface assumptions and validation evidence can support later Gateway-side analysis, reporting and evaluation work without overstating the certified hardware scope.
+
 ## Certification scope
 
 The OSHWA certification for **Thin-Pod rev 0.1** covers the creator-designed sensor-node carrier PCB and its release documentation.
@@ -40,6 +42,7 @@ The OSHWA certification for **Thin-Pod rev 0.1** covers the creator-designed sen
 * STM32 NUCLEO-N657X0-Q, ESP32-C6 or Gateway-side hardware.
 * Implemented UWB communication, radio firmware or networking.
 * Gateway DSP, TinyML, anomaly detection or predictive-maintenance system claims.
+* AI-assisted maintenance reporting, structured diagnostic reports or autonomous maintenance decisions.
 
 The commercial devices used by the board are identified as third-party components; they are not relicensed or represented as creator-designed open hardware.
 
@@ -65,6 +68,8 @@ Only the Thin-Pod rev 0.1 sensing-node carrier PCB and its release documentation
 
 Gateway transport, UWB communications, networking, DSP, TinyML, anomaly detection and maintenance-diagnostic workflows are shown here to clarify the intended system context. They are part of the wider Thin-Pod development direction, but remain outside the certified rev 0.1 hardware release.
 
+This boundary is deliberate. Thin-Pod rev 0.1 is designed to make the physical measurement layer explicit before higher-level interpretation is attempted. Later Gateway or software layers can consume the resulting signal path, but any DSP, anomaly detection, AI-assisted reporting or maintenance recommendation must remain separately implemented, evaluated and documented.
+
 ## Functional architecture
 
 ```text
@@ -86,6 +91,12 @@ RAW_IN → fuse provision → 1N5817 reverse-polarity protection
        → Pololu S7V8F3 regulated 3.3 V rail
        → PFET-switched accelerometer supply
 ```
+
+## Evidence-chain design intent
+
+Thin-Pod rev 0.1 is intended to support an evidence-chain approach to experimental condition monitoring. The carrier board provides the physical sensing and interface layer; later Gateway-side work may attach acquisition metadata, operating-context records, DSP feature outputs, baseline comparisons and report provenance.
+
+In that wider architecture, the hardware layer should remain distinct from any interpretive software layer. The board records or exposes a vibration signal; it does not itself diagnose machine faults. This separation is important for reproducibility, safety, evaluation and possible future AI-assisted reporting workflows.
 
 ## DWM3001-CDK ground-return correction
 
@@ -247,7 +258,7 @@ A reproducible modification workflow is:
 |Material|Licence|File|
 |-|-|-|
 |Creator-designed hardware source, including schematics, PCB layout and Thin-Pod-authored footprint files|CERN Open Hardware Licence Version 2 — Weakly Reciprocal (`CERN-OHL-W-2.0`)|[`LICENCE-HARDWARE.md`](LICENCE-HARDWARE.md)|
-|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENCE-DOCS.md`](LICENCE-DOCS.md)|
+|Creator-authored documentation, diagrams and photographs|Creative Commons Attribution 4.0 International (`CC-BY-4.0`)|[`LICENCE-DOCUMENTATION.md`](LICENCE-DOCUMENTATION.md)|
 |Software / firmware|None required or supplied for the certified rev 0.1 hardware scope|Not applicable|
 
 Commercial components, vendor documentation and any third-party intellectual property remain subject to their respective owners' terms and are not covered by the Thin-Pod licences. The OSHWA certification mark is used to identify this certified release and is not relicensed as Thin-Pod documentation.
@@ -289,5 +300,4 @@ This open-hardware release does not imply EMC, radio, electrical-safety or produ
 
 \---
 
-**Thin-Pod rev 0.1** is a deliberately bounded first open-hardware release: a documented vibration-sensor node PCB with a clear commercial-module boundary, an independently authored interface footprint and a release design that incorporates the principal lesson discovered during prototype bring-up.
-
+**Thin-Pod rev 0.1** is a deliberately bounded first open-hardware release: a documented vibration-sensor node PCB with a clear commercial-module boundary, an independently authored interface footprint, traceable prototype-validation evidence and a release design that incorporates the principal lesson discovered during bring-up.
