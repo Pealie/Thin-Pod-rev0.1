@@ -175,9 +175,11 @@ Thin-Pod-rev0.1/
 │   ├── prototype-bring-up/
 │   ├── gerber-inspection/
 │   └── released-design/
+│	└── README.md
 │
 └── oshwa/
     └── application-record.md
+    └── README.md
 ```
 
 ## Design and fabrication files
