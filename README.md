@@ -298,4 +298,6 @@ This open-hardware release does not imply EMC, radio, electrical-safety or produ
 * [Qorvo DWM3001-CDK product page](https://www.qorvo.com/products/p/DWM3001CDK)
 * [Analog Devices ADXL1005 product page](https://www.analog.com/en/products/adxl1005.html)
 
+---
+
 **Thin-Pod rev 0.1** is a deliberately bounded first open-hardware release: a documented vibration-sensor node PCB with a clear commercial-module boundary, an independently authored interface footprint, traceable prototype-validation evidence and a release design that incorporates the principal lesson discovered during bring-up.
